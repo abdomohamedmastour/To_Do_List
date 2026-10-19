@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "_errors.html" import show as show_errors %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="card card-auth">
+  <div class="card-body p-4">
+    <h1 class="h4 mb-3">Log in</h1>
+    <form method="post" action="{{ url_for('login') }}" data-validate="login" novalidate>
+      {{ show_errors(errors) }}
+      <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" name="email" value="{{ email }}" autocomplete="email">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Log in</button>
+    </form>
+    <p class="text-center text-muted mt-3 mb-0">New here? <a href="{{ url_for('register') }}">Create an account</a></p>
+  </div>
+</div>
+{% endblock %}
